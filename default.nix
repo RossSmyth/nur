@@ -1,0 +1,4 @@
+{ pkgs }:
+{
+  jqjq = callPackage ./jqjq { };
+}
