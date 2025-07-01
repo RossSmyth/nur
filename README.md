@@ -13,3 +13,7 @@ https://github.com/nix-community/nur
 2. jqjq
 
 [jq written in jq](https://github.com/wader/jqjq/)
+
+3. cerberus
+
+https://github.com/rems-project/cerberus
