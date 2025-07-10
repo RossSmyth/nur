@@ -12,4 +12,5 @@ pkgs.lib.fix (self: {
 
   # MSVC stuff
   fetchMsvcSdk = callPackage ./msvc-sdk/fetchMsvcSdk.nix { };
+  msvcSdk = callPackage ./msvc-sdk/msvc-sdk.nix { inherit (self) fetchMsvcSdk; };
 })
