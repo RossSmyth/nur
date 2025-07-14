@@ -15,13 +15,13 @@ pkgs.lib.fix (self: {
   wuffs = callPackage ./wuffs { };
 
   # MSVC stuff
-  fetchMsvcSdk = callPackage ./msvc-sdk/fetchMsvcSdk.nix { };
-  msvcSdk = callPackage ./msvc-sdk/msvc-sdk.nix { inherit (self) fetchMsvcSdk; };
+  xwin = callPackage ./xwin { };
+  msvcSdk = callPackage ./msvc-sdk { inherit (self) xwin; };
   clang-cl = callPackage ./clang-cl {
-    inherit (self) fetchMsvcSdk msvcSdk;
+    inherit (self) xwin msvcSdk;
   };
   msvc-rustc = callPackage ./msvc-rust {
-    inherit (self) fetchMsvcSdk msvcSdk clang-cl;
+    inherit (self) xwin msvcSdk clang-cl;
     rustc =
       pkgs.rust-bin.stable.latest.minimal.override
         or (throw "requires rust-overlay to get windows-msvc std")
