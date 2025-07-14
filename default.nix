@@ -18,15 +18,6 @@ pkgs.lib.fix (self: {
   xwin = callPackage ./xwin { };
   msvcSdk = callPackage ./msvc-sdk { inherit (self) xwin; };
   clang-cl = callPackage ./clang-cl {
-    inherit (self) xwin msvcSdk;
-  };
-  msvc-rustc = callPackage ./msvc-rust {
-    inherit (self) xwin msvcSdk clang-cl;
-    rustc =
-      pkgs.rust-bin.stable.latest.minimal.override
-        or (throw "requires rust-overlay to get windows-msvc std")
-        {
-          targets = [ "x86_64-pc-windows-msvc" ];
-        };
+    inherit (self) msvcSdk;
   };
 })

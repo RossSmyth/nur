@@ -10,7 +10,7 @@ runCommand "msvc-sdk"
 
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
-    outputHash = "sha256-bMS9gZ43tziL1t4ph84TYfDM8SLhRXtBibBqRLV/6Xc=";
+    outputHash = "sha256-UxKqx4E6yr1Bjy8uIw+g3+RKijKOQYU5Gf1gUt6qy+E=";
 
     manifest = ./manifest.json;
   }
