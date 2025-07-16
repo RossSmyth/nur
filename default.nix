@@ -8,33 +8,33 @@
     ];
   },
 }:
-let
-  inherit (pkgs) callPackage;
-in
-pkgs.lib.fix (self: {
-  c2rust = callPackage ./c2rust { };
+pkgs.lib.makeScope pkgs.newScope (
+  self:
+  let
+    inherit (self) callPackage;
+  in
+  {
+    c2rust = callPackage ./c2rust { };
 
-  cerberus = callPackage ./cerberus { };
+    cerberus = callPackage ./cerberus { };
 
-  clang-cl = callPackage ./clang-cl {
-    inherit (self) msvcSdk;
-  };
+    clang-cl = callPackage ./clang-cl { };
 
-  isle-portable = callPackage ./isle-portable { };
+    isle-portable = callPackage ./isle-portable { };
 
-  jqjq = callPackage ./jqjq { };
+    jqjq = callPackage ./jqjq { };
 
-  msvcRust = callPackage ./msvc-rust {
-    inherit (self) clang-cl msvcSdk;
-    rustc =
-      pkgs.rust-bin.stable.latest.minimal.override
-        or (throw "requires rust-overlay to get windows-msvc std")
-        { targets = [ "x86_64-pc-windows-msvc" ]; };
-  };
+    msvcRust = callPackage ./msvc-rust {
+      rustc =
+        pkgs.rust-bin.stable.latest.minimal.override
+          or (throw "requires rust-overlay to get windows-msvc std")
+          { targets = [ "x86_64-pc-windows-msvc" ]; };
+    };
 
-  msvcSdk = callPackage ./msvc-sdk { inherit (self) xwin; };
+    msvcSdk = callPackage ./msvc-sdk { };
 
-  wuffs = callPackage ./wuffs { };
+    wuffs = callPackage ./wuffs { };
 
-  xwin = callPackage ./xwin { };
-})
+    xwin = callPackage ./xwin { };
+  }
+)
