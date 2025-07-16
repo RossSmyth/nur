@@ -3,6 +3,7 @@
   runCommand,
   callPackage,
   makeBinaryWrapper,
+  llvmPackages,
 }:
 let
   c2rust = callPackage ./package.nix { };
@@ -18,5 +19,10 @@ runCommand "c2rust-${c2rust.version}"
   }
   ''
     makeWrapper ${lib.getExe c2rust} "$out/bin/c2rust" \
-      --prefix PATH : ${lib.makeBinPath [ c2rust.toolchain ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          c2rust.toolchain
+          llvmPackages.libllvm
+        ]
+      }
   ''
