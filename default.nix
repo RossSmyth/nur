@@ -12,18 +12,18 @@ let
   inherit (pkgs) callPackage;
 in
 pkgs.lib.fix (self: {
-  jqjq = callPackage ./jqjq { };
-  isle-portable = callPackage ./isle-portable { };
   c2rust = callPackage ./c2rust { };
-  cerberus = callPackage ./cerberus { };
-  wuffs = callPackage ./wuffs { };
 
-  # MSVC stuff
-  xwin = callPackage ./xwin { };
-  msvcSdk = callPackage ./msvc-sdk { inherit (self) xwin; };
+  cerberus = callPackage ./cerberus { };
+
   clang-cl = callPackage ./clang-cl {
     inherit (self) msvcSdk;
   };
+
+  isle-portable = callPackage ./isle-portable { };
+
+  jqjq = callPackage ./jqjq { };
+
   msvcRust = callPackage ./msvc-rust {
     inherit (self) clang-cl msvcSdk;
     rustc =
@@ -31,4 +31,10 @@ pkgs.lib.fix (self: {
         or (throw "requires rust-overlay to get windows-msvc std")
         { targets = [ "x86_64-pc-windows-msvc" ]; };
   };
+
+  msvcSdk = callPackage ./msvc-sdk { inherit (self) xwin; };
+
+  wuffs = callPackage ./wuffs { };
+
+  xwin = callPackage ./xwin { };
 })
