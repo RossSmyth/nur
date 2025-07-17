@@ -65,10 +65,27 @@ ocamlPackages.buildDunePackage {
   passthru.updateScript = unstableGitUpdater { branch = "master"; };
 
   meta = {
+    description = "formal operational semantics machine for ISO C11";
     homepage = "https://www.cl.cam.ac.uk/~pes20/cerberus/";
-    license = lib.licenses.bsd2;
+    license = with lib.licenses; [
+      # Most of Cerberus
+      bsd2
+      # https://github.com/rems-project/cerberus/blob/master/THIRD_PARTY_FILES.md
+      # Files from Linux kernel
+      gpl2Only
+      # Files from cppmem
+      bsd3
+      # Files from musl
+      mit
+      # Files from BSD
+      bsdOriginal
+      # Slightly modified vendored SibylFS
+      isc
+    ];
+    mainProgram = "cerberus";
     maintainers = with lib.maintainers; [
       RossSmyth
     ];
+    platforms = lib.platforms.unix;
   };
 }
