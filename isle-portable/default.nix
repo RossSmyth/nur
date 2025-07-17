@@ -23,12 +23,11 @@
 
   # Options
   imguiDebug ? false,
-  addrSan ? false,
   emscriptenHost ? "",
 }:
 stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
-  name = "isle-portable";
+  pname = "isle-portable";
   version = "0-unstable-2025-06-23";
 
   src = fetchFromGitHub {
@@ -83,10 +82,10 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
 
   meta = {
-    description = "A portable version of LEGO Island (Version 1.1, English) based on the isle decompilation project.";
+    description = "portable version of LEGO Island based on the isle decompilation project.";
     homepage = "https://github.com/isledecomp/isle-portable";
     license = lib.licenses.unfree;
-    platforms = lib.platforms.all;
+    platforms = with lib.platforms; darwin ++ linux ++ windows;
     mainProgram = "isle";
     maintainers = with lib.maintainers; [
       RossSmyth
