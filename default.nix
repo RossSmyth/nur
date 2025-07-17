@@ -1,9 +1,6 @@
 {
   pkgs ? import <nixpkgs> {
     overlays = [
-      (import (
-        builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/snapshot/2024-08-01.tar.gz"
-      ))
       (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
     ];
   },
@@ -14,7 +11,16 @@ pkgs.lib.makeScope pkgs.newScope (
     inherit (self) callPackage;
   in
   {
-    c2rust = callPackage ./c2rust { };
+    c2rust =
+      let
+        # c2rust requires an old (2022) nightly
+        old-rust = pkgs.extend (
+          import (
+            builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/snapshot/2024-08-01.tar.gz"
+          )
+        );
+      in
+      old-rust.callPackage ./c2rust { };
 
     cerberus = callPackage ./cerberus { };
 
