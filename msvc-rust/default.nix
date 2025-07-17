@@ -8,7 +8,7 @@
   msvcSdk,
 }:
 stdenvNoCC.mkDerivation {
-  inherit (rustc) version meta;
+  inherit (rustc) version;
   pname = "rustc-wrapped";
 
   dontUnpack = true;
@@ -44,4 +44,9 @@ stdenvNoCC.mkDerivation {
       echo "found hello.exe!"
     fi
   '';
+
+  meta = rustc.meta // {
+    description = "rustc wrapped for cross-compiling to MSVC from Unix systems";
+    maintainers = [ lib.maintainers.RossSmyth ];
+  };
 }

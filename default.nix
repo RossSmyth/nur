@@ -1,10 +1,10 @@
 {
   pkgs ? import <nixpkgs> {
     overlays = [
-      (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
       (import (
         builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/snapshot/2024-08-01.tar.gz"
       ))
+      (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
     ];
   },
 }:
