@@ -22,8 +22,6 @@ pkgs.lib.makeScope pkgs.newScope (
       in
       old-rust.callPackage ./c2rust { };
 
-    cerberus = callPackage ./cerberus { };
-
     clang-cl = callPackage ./clang-cl { };
 
     isle-portable = callPackage ./isle-portable { };
@@ -40,7 +38,5 @@ pkgs.lib.makeScope pkgs.newScope (
     msvcSdk = callPackage ./msvc-sdk { };
 
     wuffs = callPackage ./wuffs { };
-
-    xwin = callPackage ./xwin { };
   }
 )
