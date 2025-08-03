@@ -1,5 +1,6 @@
 {
   pkgs ? import <nixpkgs> {
+    config.microsoftVisualStudioLicenseAccepted = true;
     overlays = [
       (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
     ];
@@ -34,8 +35,6 @@ pkgs.lib.makeScope pkgs.newScope (
           or (throw "requires rust-overlay to get windows-msvc std")
           { targets = [ "x86_64-pc-windows-msvc" ]; };
     };
-
-    msvcSdk = callPackage ./msvc-sdk { };
 
     wuffs = callPackage ./wuffs { };
   }
