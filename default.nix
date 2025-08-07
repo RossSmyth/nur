@@ -25,8 +25,6 @@ pkgs.lib.makeScope pkgs.newScope (
 
     clang-cl = callPackage ./clang-cl { };
 
-    isle-portable = callPackage ./isle-portable { };
-
     jqjq = callPackage ./jqjq { };
 
     msvcRust = callPackage ./msvc-rust {
