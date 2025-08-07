@@ -33,7 +33,5 @@ pkgs.lib.makeScope pkgs.newScope (
           or (throw "requires rust-overlay to get windows-msvc std")
           { targets = [ "x86_64-pc-windows-msvc" ]; };
     };
-
-    wuffs = callPackage ./wuffs { };
   }
 )
