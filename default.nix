@@ -13,6 +13,7 @@ pkgs.lib.makeScope pkgs.newScope (
   in
   {
     audiomoth-config = callPackage ./audiomoth-config { };
+    audiomoth-flash = callPackage ./audiomoth-flash { };
 
     c2rust =
       let
