@@ -12,6 +12,8 @@ pkgs.lib.makeScope pkgs.newScope (
     inherit (self) callPackage;
   in
   {
+    audiomoth-config = callPackage ./audiomoth-config { };
+
     c2rust =
       let
         # c2rust requires an old (2022) nightly
