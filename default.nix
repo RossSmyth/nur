@@ -6,6 +6,12 @@
     ];
   },
 }:
+let
+  stable =
+    import
+      (builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/heads/release-25.11.tar.gz")
+      { };
+in
 pkgs.lib.makeScope pkgs.newScope (
   self:
   let
@@ -16,14 +22,8 @@ pkgs.lib.makeScope pkgs.newScope (
     audiomoth-flash = callPackage ./audiomoth-flash { };
     audiomoth-live = callPackage ./audiomoth-live { };
 
-    birdnet = pkgs.python3Packages.callPackage ./birdnet { };
-    birdnet-analyzer = self.callPackage ./birdnet-analyzer {
-      python3Packages = pkgs.python3Packages.overrideScope (
-        _: _: {
-          birdnet = self.birdnet;
-        }
-      );
-    };
+    birdnet = self.python3Packages.callPackage ./birdnet { };
+    birdnet-analyzer = self.callPackage ./birdnet-analyzer { };
 
     c2rust =
       let
@@ -46,5 +46,11 @@ pkgs.lib.makeScope pkgs.newScope (
           or (throw "requires rust-overlay to get windows-msvc std")
           { targets = [ "x86_64-pc-windows-msvc" ]; };
     };
+
+    python3Packages = stable.python3Packages.overrideScope (
+      _: _: {
+        inherit (self) birdnet;
+      }
+    );
   }
 )

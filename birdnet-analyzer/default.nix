@@ -3,7 +3,7 @@
   stdenv,
   python3Packages,
   fetchFromGitHub,
-  withGui ? false,
+  withGui ? true,
 }:
 python3Packages.buildPythonApplication (finalAttrs: {
   __structuredAttrs = true;
@@ -32,35 +32,43 @@ python3Packages.buildPythonApplication (finalAttrs: {
     python3Packages.setuptools
   ];
 
-  dependencies = with python3Packages; [
-    # Base deps
-    librosa
-    resampy
-    tensorflow
-    pyarrow
-    tqdm
-    pandas
-    matplotlib
-    birdnet
+  dependencies =
+    with python3Packages;
+    [
+      # Base deps
+      librosa
+      resampy
+      tensorflow
+      pyarrow
+      tqdm
+      pandas
+      matplotlib
+      birdnet
+    ]
+    ++ lib.optionals withGui (
+      [
+        # Training deps
+        optuna
+        # Embedding deps
+        # Still need to test if this is required as it's not packaged in nixpkgs atm
+        # perch-hoplite
+        # gui deps
+        gradio
+        pywebview
+        plotly
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isLinux [
+        qtpy
+        pygobject3
+      ]
+      ++ plotly.optional-dependencies.express
+    );
+
+  makeWrapperArgs = [
+    "--set-default"
+    "GUI_VERSION"
+    finalAttrs.version
   ];
-  # ++ lib.optionals withGui (
-  #   [
-  #     # Training deps
-  #     optuna
-  #     # Embedding deps
-  #     # Still need to test if this is required as it's not packaged in nixpkgs atm
-  #     # perch-hoplite
-  #     # gui deps
-  #     gradio
-  #     pywebview
-  #     plotly
-  #   ]
-  #   ++ lib.optionals stdenv.hostPlatform.isLinux [
-  #     qtpy
-  #     pygobject3
-  #   ]
-  #   ++ plotly.optional-dependencies.express
-  # );
 
   meta = {
     homepage = "https://birdnet.cornell.edu/birdnet";
