@@ -16,6 +16,8 @@ pkgs.lib.makeScope pkgs.newScope (
     audiomoth-flash = callPackage ./audiomoth-flash { };
     audiomoth-live = callPackage ./audiomoth-live { };
 
+    birdnet = pkgs.python3Packages.callPackage ./birdnet { };
+
     c2rust =
       let
         # c2rust requires an old (2022) nightly
