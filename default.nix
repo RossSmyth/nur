@@ -17,6 +17,13 @@ pkgs.lib.makeScope pkgs.newScope (
     audiomoth-live = callPackage ./audiomoth-live { };
 
     birdnet = pkgs.python3Packages.callPackage ./birdnet { };
+    birdnet-analyzer = self.callPackage ./birdnet-analyzer {
+      python3Packages = pkgs.python3Packages.overrideScope (
+        _: _: {
+          birdnet = self.birdnet;
+        }
+      );
+    };
 
     c2rust =
       let
