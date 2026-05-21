@@ -20,7 +20,6 @@ pkgs.lib.makeScope pkgs.newScope (
   {
     audiomoth-config = callPackage ./audiomoth-config { };
     audiomoth-flash = callPackage ./audiomoth-flash { };
-    audiomoth-live = callPackage ./audiomoth-live { };
 
     birdnet = self.python3Packages.callPackage ./birdnet { };
     birdnet-analyzer = self.callPackage ./birdnet-analyzer { };
