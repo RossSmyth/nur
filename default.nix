@@ -39,6 +39,8 @@ pkgs.lib.makeScope pkgs.newScope (
 
     jqjq = callPackage ./jqjq { };
 
+    microcad = callPackage ./microcad { };
+
     msvcRust = callPackage ./msvc-rust {
       rustc =
         pkgs.rust-bin.stable.latest.minimal.override
