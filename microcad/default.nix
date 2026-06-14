@@ -44,4 +44,19 @@ rustPlatform.buildRustPackage (finalAttrs: {
     "-p"
     "microcad-viewer"
   ];
+
+  meta = {
+    homepage = "https://microcad.xyz/";
+    downloadPage = "https://codeberg.org/microcad/microcad/src/branch/main";
+    donationPage = "https://opencollective.com/microcad/donate";
+    description = "description language for modeling parameterizable geometric objects";
+    longDescription = ''
+      µcad (pronounced microcad) is a description language for modeling parameterizable geometric objects.
+      Simple basic shapes can be composed to create complex geometries which then can be rendered into STL or SVG files for 3D printing or CNC milling.
+      Note: This project is in an early stage of development and is not yet feature complete.
+    '';
+    license = lib.licenses.agpl3Plus;
+    mainProgram = "microcad";
+    platforms = lib.platforms.unix;
+  };
 })
