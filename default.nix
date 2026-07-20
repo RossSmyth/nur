@@ -35,6 +35,8 @@ pkgs.lib.makeScope pkgs.newScope (
       in
       old-rust.callPackage ./c2rust { };
 
+    # chainner = callPackage ./chainner { };
+
     clang-cl = callPackage ./clang-cl { };
 
     jqjq = callPackage ./jqjq { };
