@@ -18,6 +18,8 @@ pkgs.lib.makeScope pkgs.newScope (
     inherit (self) callPackage;
   in
   {
+    appimagetool = callPackage ./appimagetool { };
+
     audiomoth-config = callPackage ./audiomoth-config { };
     audiomoth-flash = callPackage ./audiomoth-flash { };
 
