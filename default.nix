@@ -19,6 +19,7 @@ pkgs.lib.makeScope pkgs.newScope (
   in
   {
     appimagetool = callPackage ./appimagetool { };
+    buildAppImage = callPackage ./buildAppImage { };
 
     audiomoth-config = callPackage ./audiomoth-config { };
     audiomoth-flash = callPackage ./audiomoth-flash { };
