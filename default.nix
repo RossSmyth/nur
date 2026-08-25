@@ -44,6 +44,8 @@ pkgs.lib.makeScope pkgs.newScope (
 
     jqjq = callPackage ./jqjq { };
 
+    lily58-firmware = callPackage ./lily58 { };
+
     microcad = callPackage ./microcad { };
 
     msvcRust = callPackage ./msvc-rust {
