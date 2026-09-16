@@ -59,5 +59,6 @@ pkgs.lib.makeScope pkgs.newScope (
     );
 
     two-kinds-of-people = callPackage ./twokindsofpeople { };
+    melt = callPackage ./melt { };
   }
 )
