@@ -40,3 +40,12 @@ clang-cl for cross-compiling for MSVC on Linux.
 
 Rustc for cross-compiling for MSVC on Linux. Requires that [rust-overlay](https://github.com/oxalica/rust-overlay) is being used, because it requires that the
 MSVC Rust std library is installed.
+
+
+## Visual Novels
+
+Read these if you want, they are not the peak of literature.
+
+1. https://lacunova.itch.io/tkop
+1. https://kayin.moe/moonlight-duelists
+1. https://uraalice.itch.io/moon-illusion
