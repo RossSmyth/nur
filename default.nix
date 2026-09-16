@@ -57,5 +57,7 @@ pkgs.lib.makeScope pkgs.newScope (
         inherit (self) birdnet;
       }
     );
+
+    two-kinds-of-people = callPackage ./twokindsofpeople { };
   }
 )
