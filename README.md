@@ -42,10 +42,11 @@ Rustc for cross-compiling for MSVC on Linux. Requires that [rust-overlay](https:
 MSVC Rust std library is installed.
 
 
-## Visual Novels
+## Packaged Visual Novels
 
 Read these if you want, they are not the peak of literature.
 
 1. https://lacunova.itch.io/tkop
+1. https://remidie.itch.io/melt
 1. https://kayin.moe/moonlight-duelists
 1. https://uraalice.itch.io/moon-illusion
