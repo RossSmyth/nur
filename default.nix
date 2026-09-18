@@ -64,5 +64,6 @@ pkgs.lib.makeScope pkgs.newScope (
     moon-illusion = callPackage ./moon-illusion { };
     ladys-pyre = callPackage ./ladys-pyre { };
     oblivion2666demo = callPackage ./oblivion2666demo { };
+    affectionadorationabsolution = callPackage ./affectionadorationabsolution { };
   }
 )
