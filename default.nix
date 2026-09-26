@@ -25,8 +25,13 @@ pkgs.lib.makeScope pkgs.newScope (
     audiomoth-config = callPackage ./audiomoth-config { };
     audiomoth-flash = callPackage ./audiomoth-flash { };
 
-    birdnet = self.python3Packages.callPackage ./birdnet { };
+    birdnet = self.python313Packages.callPackage ./birdnet { };
     birdnet-analyzer = self.callPackage ./birdnet-analyzer { };
+    python313Packages = pkgs.python313Packages.overrideScope (
+      _: _: {
+        inherit (self) birdnet;
+      }
+    );
 
     c2rust =
       let
@@ -51,12 +56,6 @@ pkgs.lib.makeScope pkgs.newScope (
           or (throw "requires rust-overlay to get windows-msvc std")
           { targets = [ "x86_64-pc-windows-msvc" ]; };
     };
-
-    python3Packages = stable.python3Packages.overrideScope (
-      _: _: {
-        inherit (self) birdnet;
-      }
-    );
 
     two-kinds-of-people = callPackage ./twokindsofpeople { };
     melt = callPackage ./melt { };
