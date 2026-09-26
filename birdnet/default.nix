@@ -23,14 +23,14 @@
 }:
 buildPythonPackage (finalAttrs: {
   pname = "birdnet";
-  version = "1.1.1";
+  version = "1.1.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "birdnet-team";
     repo = "birdnet";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-OVqu/qs+SbjeU+3pXMDO71SispYVnNSle+udBCEO8ZU=";
+    hash = "sha256-FleTK8KMjN8ylGAe+wWz56C3dcuFVdT8ITXDP3LIHGs=";
   };
 
   __structuredAttrs = true;
