@@ -64,5 +64,6 @@ pkgs.lib.makeScope pkgs.newScope (
     ladys-pyre = callPackage ./ladys-pyre { };
     oblivion2666demo = callPackage ./oblivion2666demo { };
     affectionadorationabsolution = callPackage ./affectionadorationabsolution { };
+    lessons-in-love = callPackage ./lessons-in-love { };
   }
 )
